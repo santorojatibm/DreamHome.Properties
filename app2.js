@@ -17,7 +17,7 @@ var express          = require('express');
 var bodyParser       = require('body-parser');
 var cfenv            = require('cfenv');
 var request          = require('request');
-var ServiceDiscovery = require('bluemix-service-discovery');
+// var ServiceDiscovery = require('bluemix-service-discovery');
 var MongoClient      = require('mongodb').MongoClient;
 
 /******************************************************/
