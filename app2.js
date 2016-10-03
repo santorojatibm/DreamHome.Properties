@@ -33,6 +33,12 @@ var server = http.createServer(app);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json
 
+// The IP address of the Cloud Foundry DEA (Droplet Execution Agent) that hosts this application:
+var host = (process.env.VCAP_APP_HOST || 'localhost'); 
+// The port on the DEA for communication with the application:
+var port = (process.env.VCAP_APP_PORT || 3000);
+
+
 /******************************************************/
 /* Grab environment variables and connect to Service  */
 /* Directory                                          */
@@ -219,5 +225,5 @@ app.get('/test2', function (req, res)
 /**********************************************/
 /* Start the server                           */ 
 /**********************************************/ 
-server.listen(80);
-//console.log("Starting server on port " + server.address().port);
+server.listen(host,port);
+console.log("Starting server on: " + server.address().host + ":" + server.address().port);
