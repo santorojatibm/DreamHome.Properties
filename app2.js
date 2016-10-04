@@ -237,7 +237,7 @@ app.get('/hello', function (req, res)
   // send the http response message
   retjson.success = "Hello from Dream Home service!";
 //  helper.httpJsonResponse(res,statusCode,retjson);
-  res.status(sttudCode).json(retjson);
+  res.status(statusCode).json(retjson);
   res.end;
 
   return;
