@@ -230,4 +230,4 @@ app.get('/test2', function (req, res)
 /**********************************************/ 
 server.listen(port, host);
 //server.listen();
-console.log("Server started on host:port " + server.address().host + ":" + server.address().port);
+console.log("Server started on host:port " + server.address().hostname + ":" + server.address().port);
