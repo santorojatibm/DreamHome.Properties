@@ -17,13 +17,6 @@ var express          = require('express');
 var bodyParser       = require('body-parser');
 var request          = require('request');
 var MongoClient      = require('mongodb').MongoClient;
-// var cfenv            = require('cfenv');
-// var ServiceDiscovery = require('bluemix-service-discovery');
-
-/******************************************************/
-/* Get the app environment from Cloud Foundry         */
-/******************************************************/
-//var appEnv = cfenv.getAppEnv();
 
 /******************************************************/
 /* Set up express                                     */
@@ -37,10 +30,11 @@ app.use(bodyParser.json()); // for parsing application/json
 //var host = (process.env.VCAP_APP_HOST || 'localhost'); 
 // The port on the DEA for communication with the application:
 //var port = (process.env.VCAP_APP_PORT || 3000);
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var host = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+//var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+//var host = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var port = process.env.OPENSHIFT_NODEJS_PORT;
+var host = process.env.OPENSHIFT_NODEJS_IP;
 console.log("Server will listen on host:port " + host + ":" + port);
-
 
 /******************************************************/
 /* Grab environment variables and connect to Service  */
@@ -48,83 +42,12 @@ console.log("Server will listen on host:port " + host + ":" + port);
 /******************************************************/
 console.log("DreamHomeServiceNode ==> Begin Execution");
 
+/*
 console.log("DreamHomeServiceNode ==> Pausing for network connection");
 var seconds = 10;
 var waitTill = new Date(new Date().getTime() + seconds * 1000);
 while(waitTill > new Date()) { }
 console.log("DreamHomeServiceNode ==> Pause complete");
-
-/*
-if (process.env.VCAP_SERVICES)
-{
-   var env = JSON.parse(process.env.VCAP_SERVICES);
-      
-   console.log('**************************************************************************************************');
-   //console.log('DreamHomeServiceNode ==> MongoDB name                  = ' + env['user-provided'][0].name);
-   //console.log('DreamHomeServiceNode ==> MongoDB credentials           = ' + env['user-provided'][0].credentials.uri);
-   console.log('DreamHomeServiceNode ==> Service Discovery name        = ' + env['service_discovery'][0].name);
-   console.log('DreamHomeServiceNode ==> Service Discovery auth token  = ' + env['service_discovery'][0].credentials.auth_token);
-   console.log('DreamHomeServiceNode ==> Service Discovery credentials = ' + env['service_discovery'][0].credentials.url);
-   console.log('**************************************************************************************************');
-      
-   var discovery = new ServiceDiscovery({
-       name: env['service_discovery'][0].name,
-       auth_token: env['service_discovery'][0].credentials.auth_token,
-       url: 'https://servicediscovery.ng.bluemix.net',
-       //url: env['service_discovery'][0].credentials.url,
-       version: 1
-   });
-
-
-   var instance = {
-      service_name: 'DreamHomeServiceNodeDocker',
-      ttl: 60, // 1 min
-      endpoint: {
-        type: 'http',
-        value: process.env.IP
-      },
-      metadata: {
-        cookie: 'crumbles'
-      }
-   };
-
-   console.log("3. Before register");
-
-   discovery.register(instance, function(err, response, body) 
-   {
-      if (err)
-      {
-         console.log("DreamHomeServiceNode ==> Error running register");
-         console.log(err);
-      }
-      else
-      {
-         console.log("DreamHomeServiceNode ==> Results from register");
-         console.log(body);
-         var id = body.id;
-
-         setInterval(function() 
-         {
-            discovery.renew(id, function(err, response) 
-            {
-               if (err)
-               {
-                  console.log("DreamHomeServiceNode ==> Heartbeak Error");
-                  console.log(err);
-               }
-               else
-               {
-                  console.log("DreamHomeServiceNode ==> Heartbeak OK");
-               }
-            });
-         }, 10000);
-      }
-    });
-}
-else
-{
-   console.log("DreamHomeClientNode ==> Cannot get environment variables");
-}
 */
 
 /******************************************************/
@@ -163,27 +86,6 @@ app.get('/properties/:propertyID', function (req, res)
    var mongoURL = "mongodb://169.45.196.58:27017/dreamHome";
    console.log("MongoDB URL: " + mongoURL);
 
-/*
-   var mongoString;
-   var dreamHomeDatabase = "dreamHome";
-
-   console.log("DreamHomeServiceNode.properties/:propertyID ==> Begin");
-
-   if (process.env.VCAP_SERVICES) 
-   {
-      mongoString = "mongoDB://root:169.45.196.58:27017/dreamhome";
-      //mongoString = env['user-provided'][0].credentials.uri;
-   }
-   else
-   {
-      mongoString = "mongoDB://root:169.45.196.58:27017/dreamhome";
-   }
-
-   var mongoIP     = mongoString.substr(15, 13);
-   var mongoPort   = mongoString.substr(29, 5); 
-   var mongoURL    = "mongodb://" + mongoIP + ":" + mongoPort + "/" + dreamHomeDatabase;
-*/
-
    MongoClient.connect(mongoURL, function(err, db)
    {
       if(err) 
@@ -220,23 +122,6 @@ app.get('/properties/:propertyID', function (req, res)
       }
   });
 });
-
-/******************************************************/
-/* Path to .........                                  */
-/******************************************************/
-app.get('/test2', function (req, res) 
-{
-   'use strict';
-   var x = 3;
-   var device = "abcdefg#Bob";
-   var device2 = "abcdefg#Alice";
-   console.log("Here we go!");
-   console.log(device.substr(0, device.indexOf("#")));
-   console.log(device.substr(device.indexOf("#") +1));
-   console.log(device2.substr(device2.indexOf("#") +1));
-   res.sendStatus(200);
-});
-
 
 app.get('/hello', function (req, res) 
 {
