@@ -26,57 +26,14 @@ var server = http.createServer(app);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json
 
-// The IP address of the Cloud Foundry DEA (Droplet Execution Agent) that hosts this application:
-//var host = (process.env.VCAP_APP_HOST || 'localhost'); 
-// The port on the DEA for communication with the application:
-//var port = (process.env.VCAP_APP_PORT || 3000);
-//var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
-//var host = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 var port = 8080;
-var host = "0.0.0.0";
-console.log("Server will listen on host:port " + host + ":" + port);
+console.log("Server will listen on port " port);
 
 /******************************************************/
 /* Grab environment variables and connect to Service  */
 /* Directory                                          */
 /******************************************************/
 console.log("DreamHomeServiceNode ==> Begin Execution");
-
-/*
-console.log("DreamHomeServiceNode ==> Pausing for network connection");
-var seconds = 10;
-var waitTill = new Date(new Date().getTime() + seconds * 1000);
-while(waitTill > new Date()) { }
-console.log("DreamHomeServiceNode ==> Pause complete");
-*/
-
-/******************************************************/
-/* Path to .........                                  */
-/******************************************************/
-/*
-app.get('/showInstances', function (req, res) 
-{
-   console.log("DreamHomeServiceNode.showInstances ==> Begin");
-
-   discovery.getInstances(function(err, response, body) 
-   {
-      if (err)
-      {
-         console.log("DreamHomeServiceNode.showInstances ==> Error running getInstances");
-         console.log(err);
-         res.sendStatus(500);
-         return;
-      }
-      else
-      {
-         console.log("DreamHomeServiceNode.showInstances ==> Results from getInstances");
-         console.log(body);
-         res.sendStatus(200);
-         return;
-      }
-   });
-});
-*/
 
 /******************************************************/
 /* Finds one property in MongoDB                      */
@@ -132,7 +89,6 @@ app.get('/hello', function (req, res)
 
   // send the http response message
   retjson.success = "Hello from Dream Home service!";
-//  helper.httpJsonResponse(res,statusCode,retjson);
   res.status(statusCode).json(retjson);
   res.end;
 
@@ -142,8 +98,5 @@ app.get('/hello', function (req, res)
 /**********************************************/
 /* Start the server                           */ 
 /**********************************************/ 
-//server.listen(port, host);
 server.listen(port);
-console.log("Server started on host:port " + host + ":" + port );
-//server.listen();
-//console.log("Server started on host:port " + server.address().hostname + ":" + server.address().port);
+console.log("Server started on port " port );
