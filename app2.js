@@ -17,7 +17,7 @@ var express          = require('express');
 var bodyParser       = require('body-parser');
 var request          = require('request');
 var MongoClient      = require('mongodb').MongoClient;
-//var cfenv            = require('cfenv');
+// var cfenv            = require('cfenv');
 // var ServiceDiscovery = require('bluemix-service-discovery');
 
 /******************************************************/
@@ -126,9 +126,11 @@ else
    console.log("DreamHomeClientNode ==> Cannot get environment variables");
 }
 */
+
 /******************************************************/
 /* Path to .........                                  */
 /******************************************************/
+/*
 app.get('/showInstances', function (req, res) 
 {
    console.log("DreamHomeServiceNode.showInstances ==> Begin");
@@ -151,6 +153,8 @@ app.get('/showInstances', function (req, res)
       }
    });
 });
+*/
+
 /******************************************************/
 /* Finds one property in MongoDB                      */
 /******************************************************/
@@ -174,6 +178,8 @@ app.get('/properties/:propertyID', function (req, res)
    var mongoPort   = mongoString.substr(29, 5); 
    var mongoURL    = "mongodb://" + mongoIP + ":" + mongoPort + "/" + dreamHomeDatabase;
   
+
+   console.log("MongoDB URL: " + mongoURL);
    MongoClient.connect(mongoURL, function(err, db) 
    {
       if(err) 
@@ -210,6 +216,7 @@ app.get('/properties/:propertyID', function (req, res)
       }
   });
 });
+
 /******************************************************/
 /* Path to .........                                  */
 /******************************************************/
