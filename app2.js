@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json
 
 var port = 8080;
-console.log("Server will listen on port " port);
+console.log("Server will listen on port " + port);
 
 /******************************************************/
 /* Grab environment variables and connect to Service  */
@@ -99,4 +99,4 @@ app.get('/hello', function (req, res)
 /* Start the server                           */ 
 /**********************************************/ 
 server.listen(port);
-console.log("Server started on port " port );
+console.log("Server started on port " + port );
