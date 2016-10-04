@@ -160,6 +160,10 @@ app.get('/showInstances', function (req, res)
 /******************************************************/
 app.get('/properties/:propertyID', function (req, res) 
 {
+   var mongoURL = "mongodb://169.45.196.58:27017/dreamHome";
+   console.log("MongoDB URL: " + mongoURL);
+
+/*
    var mongoString;
    var dreamHomeDatabase = "dreamHome";
 
@@ -174,13 +178,13 @@ app.get('/properties/:propertyID', function (req, res)
    {
       mongoString = "mongoDB://root:169.45.196.58:27017/dreamhome";
    }
+
    var mongoIP     = mongoString.substr(15, 13);
    var mongoPort   = mongoString.substr(29, 5); 
    var mongoURL    = "mongodb://" + mongoIP + ":" + mongoPort + "/" + dreamHomeDatabase;
-  
+*/
 
-   console.log("MongoDB URL: " + mongoURL);
-   MongoClient.connect(mongoURL, function(err, db) 
+   MongoClient.connect(mongoURL, function(err, db)
    {
       if(err) 
       {
