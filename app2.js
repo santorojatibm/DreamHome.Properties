@@ -228,7 +228,8 @@ app.get('/test2', function (req, res)
 /**********************************************/
 /* Start the server                           */ 
 /**********************************************/ 
-server.listen(port, host);
-console.log("Server started on host:port " + host + ":" + server.address().port );
+//server.listen(port, host);
+server.listen(port);
+console.log("Server started on host:port " + host + ":" + port );
 //server.listen();
 //console.log("Server started on host:port " + server.address().hostname + ":" + server.address().port);
