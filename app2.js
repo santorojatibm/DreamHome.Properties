@@ -225,6 +225,22 @@ app.get('/test2', function (req, res)
    console.log(device2.substr(device2.indexOf("#") +1));
    res.sendStatus(200);
 });
+
+
+app.get('/hello', function (req, res) 
+{
+  var retjson = {"RC":rcOK};       // assume a good json response
+  var statusCode = 200;            // assume valid http response code=200 (OK, good response)
+
+  // send the http response message
+  retjson.success = "Hello from Dream Home service!";
+//  helper.httpJsonResponse(res,statusCode,retjson);
+  res.status(sttudCode).json(retjson);
+  res.end;
+
+  return;
+});
+
 /**********************************************/
 /* Start the server                           */ 
 /**********************************************/ 
