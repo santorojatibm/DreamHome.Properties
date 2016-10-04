@@ -229,6 +229,8 @@ app.get('/test2', function (req, res)
 
 app.get('/hello', function (req, res) 
 {
+  console.log("get../hello called");
+
   var retjson = {"RC":rcOK};       // assume a good json response
   var statusCode = 200;            // assume valid http response code=200 (OK, good response)
 
