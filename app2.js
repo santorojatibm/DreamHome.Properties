@@ -15,10 +15,10 @@
 var http             = require('http');
 var express          = require('express');
 var bodyParser       = require('body-parser');
-//var cfenv            = require('cfenv');
-//var request          = require('request');
-// var ServiceDiscovery = require('bluemix-service-discovery');
+var request          = require('request');
 var MongoClient      = require('mongodb').MongoClient;
+//var cfenv            = require('cfenv');
+// var ServiceDiscovery = require('bluemix-service-discovery');
 
 /******************************************************/
 /* Get the app environment from Cloud Foundry         */
