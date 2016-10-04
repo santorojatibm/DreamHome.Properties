@@ -32,8 +32,8 @@ app.use(bodyParser.json()); // for parsing application/json
 //var port = (process.env.VCAP_APP_PORT || 3000);
 //var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 //var host = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-var port = process.env.OPENSHIFT_NODEJS_PORT;
-var host = process.env.OPENSHIFT_NODEJS_IP;
+var port = 8080;
+var host = "0.0.0.0";
 console.log("Server will listen on host:port " + host + ":" + port);
 
 /******************************************************/
