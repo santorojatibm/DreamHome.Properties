@@ -19,6 +19,10 @@ var bodyParser       = require('body-parser');
 var request          = require('request');
 var MongoClient      = require('mongodb').MongoClient;
 
+// configuration parms
+var port = 8080;
+var mongoURL = "mongodb://169.45.196.58:27017/dreamHome";
+
 /******************************************************/
 /* Set up express                                     */
 /******************************************************/
@@ -27,8 +31,6 @@ var server = http.createServer(app);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json
 
-var port = 8080;
-console.log("Server will listen on port " + port);
 
 /******************************************************/
 /* Grab environment variables and connect to Service  */
@@ -41,7 +43,6 @@ console.log("DreamHomeServiceNode ==> Begin Execution");
 /******************************************************/
 app.get('/properties/:propertyID', function (req, res) 
 {
-   var mongoURL = "mongodb://169.45.196.58:27017/dreamHome";
    console.log("MongoDB URL: " + mongoURL);
 
    MongoClient.connect(mongoURL, function(err, db)
