@@ -84,13 +84,13 @@ app.get('/properties/:propertyID', function (req, res)
 
 app.get('/hello', function (req, res) 
 {
-  console.log("app.get(./hello from jim function has been called.");
+  console.log("app.get(./hello function has been called.");
 
   var retjson = {"RC":0};          // assume a good json response
   var statusCode = 200;            // assume valid http response code=200 (OK, good response)
 
   // send the http response message
-  retjson.success = "Hello from Dream Home service!";
+  retjson.success = "Hello from Jim at Dream Home service!";
   res.status(statusCode).json(retjson);
   res.end;
 
