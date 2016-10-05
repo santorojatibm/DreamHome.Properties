@@ -10,6 +10,7 @@
 /*             MongoDB database                                                 */
 /*                                                                              */
 /* Author:     Jim Williams                                                     */
+/*             mods for OpenShift by: Sal Carceller
 /*                                                                              */
 /********************************************************************************/
 var http             = require('http');
