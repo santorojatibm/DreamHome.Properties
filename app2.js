@@ -90,7 +90,7 @@ app.get('/hello', function (req, res)
   var statusCode = 200;            // assume valid http response code=200 (OK, good response)
 
   // send the http response message
-  retjson.success = "Hello from JS at Dream Home service!";
+  retjson.success = "Hello from SC at Dream Home service!";
   res.status(statusCode).json(retjson);
   res.end;
 
