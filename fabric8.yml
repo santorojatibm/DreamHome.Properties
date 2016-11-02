@@ -1,0 +1,11 @@
+---
+pipeline: "workflows/node/CanaryReleaseStage/Jenkinsfile"
+buildName: "mydreamhome"
+codeReview: false
+links:
+  Git: "https://github.com/santorojatibm/DreamHome.Properties.git"
+  Job: "http://jenkins.f8.35.162.153.124.xip.io/job/mydreamhome"
+  Staging: "http://10.200.77.25:80/kubernetes/pods?namespace=f8-staging"
+environments:
+  Staging: "f8-staging"
+useLocalFlow: true
