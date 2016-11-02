@@ -21,7 +21,7 @@ var request          = require('request');
 var MongoClient      = require('mongodb').MongoClient;
 
 // configuration parms
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 var mongoURL = "mongodb://169.45.196.58:27017/dreamHome";
 
 /******************************************************/
