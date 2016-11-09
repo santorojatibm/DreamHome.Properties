@@ -11,7 +11,7 @@
 /*                                                                              */
 /* Author:     Jim Williams                                                     */
 /*             mods for OpenShift by: Sal Carceller
-/*             mods for fabric8 by John Santoro
+/*             mods for fabric8 by John Santoro 11-09-16
 /*                                                                              */
 /********************************************************************************/
 var http             = require('http');
