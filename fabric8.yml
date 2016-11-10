@@ -1,9 +1,9 @@
 ---
-buildName: "dreamhome-properties"
+buildName: "dreamhome-properties-again"
 codeReview: false
 links:
   Git: "https://github.com/santorojatibm/DreamHome.Properties.git"
-  Job: "http://jenkins.f8.54.212.208.140.xip.io/job/dreamhome-properties"
+  Job: "http://jenkins.f8.54.212.208.140.xip.io/job/dreamhome-properties-again"
   Staging: "http://10.200.77.25:80/kubernetes/pods?namespace=f8-staging"
 environments:
   Staging: "f8-staging"
